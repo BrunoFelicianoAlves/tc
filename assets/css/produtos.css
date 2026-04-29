@@ -1,0 +1,320 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* =========================
+   HEADER FIXO INICIO
+========================= */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    /* background: linear-gradient(90deg, #0d6efd, #084298); */
+    background: linear-gradient(90deg, #0d6efd, #0d6efd);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000; /* menor */
+}
+
+.titulo {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+}
+
+main {
+    flex: 1;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.banner {
+    width: 100%;
+    /* padding: 40px 20px; */
+    background: #e9ecef;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    /* z-index: -1; */
+
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   BANNER / SLIDER
+========================= */
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-slide {
+    display: none;
+    width: 100%;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.banner-slide.active {
+    display: block;
+}
+
+/* =========================
+   PÁGINA DE PRODUTO
+========================= */
+
+.produto-container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/* CARD PRINCIPAL */
+.card {
+    border-radius: 14px;
+    padding: 50px 40px;
+}
+
+/* TÍTULO PRINCIPAL */
+.card h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* SUBTÍTULOS */
+.card h2 {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* PARÁGRAFOS */
+.card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* IMAGENS */
+ .produto-img {
+    max-width: 500px;
+    /* width: 100%; */
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+}
+
+/* LISTA */
+.produto-caracteristicas ul {
+    margin-top: 20px;
+    padding-left: 0;              /* remove recuo padrão */
+    list-style-position: inside;  /* traz a bolinha para dentro */
+    text-align: left;             /* garante alinhamento à esquerda */
+}
+
+.produto-caracteristicas li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* BOTÃO */
+.btn-saiba-mais {
+    display: inline-block;
+    background: #0d6efd;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-saiba-mais:hover {
+    background: #084298;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    background: #1f2428;
+    color: #cfd6dc;
+    padding: 60px 20px 0;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #cfd6dc;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #cfd6dc;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-col ul li a:hover {
+    color: #0d6efd;
+}
+
+/* barra inferior */
+.footer-bottom {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #9aa4ad;
+    border-top: 1px solid #2c3338;
+}
+
+/* =========================
+   CTA - CHAMADA PARA AÇÃO
+========================= */
+
+.produto-cta {
+    margin-top: 50px;
+    padding: 40px 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+.produto-cta h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #222;
+}
+
+.produto-cta p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* destaque final */
+.produto-cta p strong {
+    color: #0d6efd;
+}
+
+/* botão mais destacado */
+.center-button {
+    margin-top: 20px;
+}
+
+.btn-saiba-mais {
+    display: inline-block;
+    background: #0d6efd;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(13,110,253,0.3);
+}
+
+.btn-saiba-mais:hover {
+    background: #084298;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(13,110,253,0.4);
+}
+
+@media (max-width: 768px) {
+    .produto-cta {
+        padding: 25px 20px;
+        text-align: left;
+    }
+
+    .produto-cta h2 {
+        font-size: 1.4rem;
+    }
+
+    .produto-cta p {
+        font-size: 0.95rem;
+    }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .card h1 {
+        font-size: 1.6rem;
+    }
+
+    .card h2 {
+        font-size: 1.4rem;
+    }
+
+    .produto-img {
+        max-width: 100%;
+    }
+}
