@@ -104,9 +104,19 @@ header nav a {
 }
 
 /* CARD PRINCIPAL */
-.card {
+/* .card {
     border-radius: 14px;
     padding: 50px 40px;
+} */
+
+.card {
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .btn {
+    margin-top: auto;
 }
 
 /* TÍTULO PRINCIPAL */
@@ -129,6 +139,12 @@ header nav a {
     font-size: 1.05rem;
     line-height: 1.7;
     color: #444;
+}
+
+.descricao {
+    font-size: 14px !important;
+    color: #555 !important;
+    margin: 10px 0;
 }
 
 /* IMAGENS */
@@ -297,6 +313,12 @@ header nav a {
     .produto-cta p {
         font-size: 0.95rem;
     }
+
+    .descricao {
+        font-size: 14px !important;
+        color: #555 !important;
+        margin: 10px 0;
+    }
 }
 
 /* RESPONSIVO */
@@ -305,6 +327,7 @@ header nav a {
     .card {
         padding: 30px 20px;
     }
+    
 
     .card h1 {
         font-size: 1.6rem;

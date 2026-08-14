@@ -8,6 +8,7 @@
 /* =========================
    HEADER FIXO INICIO
 ========================= */
+
 .site-header {
     position: fixed;
     top: 0;
@@ -30,6 +31,11 @@
   font-size: 2.2rem;
   font-weight: bold;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+.titulo a {
+    text-decoration: none !important;
+    color: inherit;
 }
 
 /* =========================
@@ -165,6 +171,14 @@ header nav a {
     margin: 0 auto;
     display: block;
 }
+
+/* .promo-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    padding: 10px;
+} */
 
 .card {
   background: #fff;
