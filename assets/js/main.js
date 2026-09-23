@@ -71,4 +71,3 @@ indicators.forEach(indicator => {
 
 // Troca automática a cada 5 segundos.
 setInterval(nextSlide, 5000);
-
