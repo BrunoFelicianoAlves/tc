@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Todos os Produtos — RecomendoTech</title>
+    <meta name="description" content="Catálogo completo de produtos recomendados: notebooks, smartphones, cadeiras, ferramentas e muito mais.">
+
+    <link rel="preload" href="/includes/nav.html" as="fetch" crossorigin>
+    <link rel="preload" href="/includes/footer.html" as="fetch" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/moderno.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon/favicon-48x48.png">
+    <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
+
+</head>
+<body class="pagina-moderna">
+
+    <header class="site-header">
+        <h5 class="titulo">
+            <a href="https://recomendotech.com.br/">RecomendoTech</a>
+        </h5>
+    </header>
+
+    <section class="banner">
+        <div id="menu"></div>
+    </section>
+
+    <!-- ================= CABEÇALHO DA PÁGINA ================= -->
+    <section class="secao" style="padding-bottom:0;">
+        <div class="secao-header">
+            <h2 style="font-size:1.9rem;">Todos os produtos</h2>
+        </div>
+        <div class="hero-search" style="margin:0 0 6px;padding:0;max-width:100%;">
+            <form id="form-busca">
+                <input type="text" id="campo-busca" placeholder="Buscar por nome do produto...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= FILTRO DE CATEGORIA ================= -->
+    <div class="filtro-barra">
+        <nav class="categorias-pill" id="categorias-pill">
+            <!-- gerado via JS -->
+        </nav>
+        <p class="filtro-info" id="contador-resultados"></p>
+    </div>
+
+    <main class="content-area">
+        <div class="products secao" id="grade-produtos" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+            <!-- cards gerados via JS -->
+        </div>
+
+        <div class="produtos-vazio" id="estado-vazio" style="display:none;">
+            <strong>Nenhum produto encontrado</strong>
+            Tenta buscar por outro termo ou mudar a categoria.
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="assets/js/main.js"></script>
+
+    <script>
+    // =========================================================
+    // CATÁLOGO DE PRODUTOS
+    // Pra adicionar um produto novo, basta incluir um objeto
+    // aqui embaixo — não precisa mexer no HTML.
+    // =========================================================
+    const PRODUTOS = [
+        // ---- Notebooks ----
+        { nome: "Positivo Vision Intel Core i3 8GB RAM 256GB SSD Tela 15.6\" Full HD", categoria: "Notebooks", imagem: "/assets/img/notebooks/positivo-vision-c15m-intel-celeron-n4500/positivo-vision-c15m-intel-celeron-n4500.png", link: "/produtos/notebooks/positivo-vision-c15m-intel-celeron-n4500.html", badge: "Mais vistos" },
+        { nome: "Notebook Dell Inspiron I15-i1300-a60p 15.6 I5 8GB 512GB", categoria: "Notebooks", imagem: "/assets/img/notebooks/dell-inspiron-I15-i1300-a30p/dell-inspiron-i15-i1300-a30p-img1.png", link: "/produtos/notebooks/dell-inspironiI15-i1300-a15p.html", badge: "Mais vistos" },
+        { nome: "Notebook Samsung Galaxy Book4 Intel Core i5-1335U, 8GB, 512GB SSD", categoria: "Notebooks", imagem: "/assets/img/notebooks/samsung-galaxy-book4/samsung-galaxy-book4.png", link: "/produtos/notebooks/samsung-galaxy-book4.html" },
+        { nome: "Notebook Vaio FE16 AMD Ryzen 7 5825U 8GB RAM 512GB SSD Tela 16\"", categoria: "Notebooks", imagem: "/assets/img/notebooks/note-vaio/notebook-vaio-fe16-amd-ryzen-7-5825u.png", link: "/produtos/notebooks/vaio-fe16-amd-ryzen-7-5825u.html" },
+        { nome: "ASUS TUF Gaming F16, NVIDIA RTX 3050, Core 5 210H, 8GB, 512GB SSD", categoria: "Notebooks", imagem: "/assets/img/notebooks/asus-tuf-gaming-f16-nvidia-rtx-3050/asus-tuf-gaming-f16-nvidia-rtx-3050-img1.webp", link: "/produtos/notebooks/asus-tuf-gaming-a15-fa506ncg.html" },
+        { nome: "Lenovo IdeaPad Slim 3 15IRH10 Core i5-13420H 8GB 512GB SSD", categoria: "Notebooks", imagem: "/assets/img/notebooks/lenovo-ideapad-slim-3-15irh10-intel-core-i5-13420h-8gb-512gb-ssd-windows-11/lenovo-ideapad-slim-3-15irh10-intel-core-i5-13420h-8gb-512gb-ssd-windows-11.png", link: "/produtos/notebooks/lenovo-ideapad-slim-3-15irh10.html" },
+
+        // ---- Smartphones ----
+        { nome: "Motorola Moto G05 — 128GB • até 12GB RAM Boost • Bateria 5200mAh", categoria: "Smartphones", imagem: "assets/img/celulares/moto-g05/img01-Moto-g05.png", link: "/produtos/smartphone/moto-g05.html" },
+        { nome: "Smartphone Motorola Edge 60 5G - 512GB 12GB RAM+12GB RAM", categoria: "Smartphones", imagem: "assets/img/celulares/motorola-edge-60/motorola-edge-60.webp", link: "https://meli.la/2FfuwUy", badge: "Mais vistos" },
+        { nome: "Celular Smartphone Realme C73 256GB 8GB RAM Dual Sim 120Hz 6000mAh", categoria: "Smartphones", imagem: "assets/img/celulares/realme-c73/realme-c73.png", link: "https://meli.la/14xajt8" },
+
+        // ---- TVs ----
+        { nome: "Smart TV U8600F Crystal UHD 4K 50\" 2025", categoria: "TVs", imagem: "assets/img/televisao/smart-tv-u8600f-crystal-uhd-4k/smart-tv-u8600f-crystal-uhd-4k-img1.webp", link: "/produtos/televisao/smart-tv-u8600f-crystal-uhd-4k.html", badge: "Mais vistos" },
+        { nome: "Smart TV LG UHD AI UA85 50\" HDR10 Pro Processador", categoria: "TVs", imagem: "/assets/img/televisao/smart-tv-4k-50-lg-uhd-50ua85/smart-tv-4k-50-lg-uhd-50ua85-img1.webp", link: "/produtos/televisao/smart-tv-4k-50-lg-uhd-50ua85.html" },
+        { nome: "Smart TV AIWA 50” Android 4K Borda Ultrafina HDR10", categoria: "TVs", imagem: "/assets/img/televisao/smart-tv-aiwa-50-android-4k-borda-ultrafina/smart-tv-aiwa-50-android-4k-borda-ultrafina-img1.webp", link: "/produtos/televisao/smart-tv-aiwa-50-android-4k.html" },
+
+        // ---- Cadeiras ----
+        { nome: "Cadeira Escritório Ergonômica Genebra B500 Luvinco (cinza)", categoria: "Cadeiras", imagem: "assets/img/cadeiras-escritorio/genebra-g500-luvinco-cor-cinza/genebra-g500-luvinco-cor-cinza-img1.webp", link: "/produtos/cadeiras/ergonmica-genebra-b500-luvinco-cinza.html", badge: "Mais vistos" },
+        { nome: "Cadeira De Escritório Ergonômica Giratória C600 Fivdaily Preta", categoria: "Cadeiras", imagem: "assets/img/cadeiras-escritorio/giratoria-c600-fivdaily/giratoria-c600-fivdaily-img1.webp", link: "/produtos/cadeiras/ergonmica-giratoria-c600-fivdaily.html", badge: "Mais vistos" },
+        { nome: "Cadeira Escritório Ergonômica Genebra B500 Luvinco", categoria: "Cadeiras", imagem: "assets/img/cadeiras-escritorio/genebra-b500-luvinco/cadeira-escritorio-img01.webp", link: "/produtos/cadeiras/ergonmica-genebra-b500-luvinco.html" },
+        { nome: "Cadeira Escritório Diretor Reclinável Ergonômica Giratória", categoria: "Cadeiras", imagem: "assets/img/cadeiras-escritorio/diretor-reclinavel-ergonomica/cadeira-escritorio-img01.webp", link: "/produtos/cadeiras/diretor-reclinavel-ergonomica.html" },
+
+        // ---- Ferramentas ----
+        { nome: "Carpintaria 4 Brocas Buraco Quadrado", categoria: "Ferramentas", imagem: "assets/img/ferramentas/produto1-brocas-buraco-quadrado.png", link: "https://s.shopee.com.br/4AzroStLto", badge: "Novo" },
+        { nome: "Ferramentas Profissionais de Limpeza de Lacuna de Azulejo, Gancho de Reparo Cerâmico", categoria: "Ferramentas", imagem: "assets/img/ferramentas/kit-limpeza-lacuna-azulejo.png", link: "https://s.shopee.com.br/3B7Kg1rBqb" },
+        { nome: "Carpintaria 4 Brocas Buraco Quadrado", categoria: "Ferramentas", imagem: "assets/img/ferramentas/brocas-buraco-quadrado.png", link: "https://s.shopee.com.br/BTj6ln4bD" },
+        { nome: "Kit 4 Canetas Marcadora Permanente", categoria: "Ferramentas", imagem: "assets/img/ferramentas/kit-4-canetas-marcadora.png", link: "https://s.shopee.com.br/9zxeoyCo2c" },
+        { nome: "Kit Limpador Pastilha de Máquina de Lavar Roupa", categoria: "Ferramentas", imagem: "assets/img/ferramentas/pastilha-maquina-lavar.png", link: "https://s.shopee.com.br/50YysCU8dJ" },
+        { nome: "Broca de Chanfro de Diamante com Rosca M14, Corte Cônica 50mm", categoria: "Ferramentas", imagem: "assets/img/ferramentas/broca-chanfro-diamante.png", link: "https://s.shopee.com.br/7KwtejoORr" },
+
+        // ---- Impressoras ----
+        { nome: "Brother DCP-L2540DW Multifuncional Mono Láser", categoria: "Impressoras", imagem: "assets/img/impressoras/brother-dcp-l2540dw/brother-dcp-l2540dw-img1.webp", link: "/produtos/impressora/brother-dcp-l2540dw.html", badge: "Mais vistos" },
+        { nome: "Impressora Multifuncional HP 4103 FDW LaserJet Pro Wi-Fi USB", categoria: "Impressoras", imagem: "assets/img/impressoras/impressora-multifuncional-hp-4103/impressora-multifuncional-hp-4103-img01.webp", link: "/produtos/impressora/impressora-multifuncional-hp-4103.html" },
+        { nome: "Impressora Multifuncional Maxify GX7010 Mega Tank Canon", categoria: "Impressoras", imagem: "assets/img/impressoras/impressora-multifuncional-maxify-gx7010/impressora-multifuncional-maxify-gx7010-img01.webp", link: "/produtos/impressora/impressora-multifuncional-maxify-gx7010.html" },
+        { nome: "Multifuncional Epson L6490 EcoTank", categoria: "Impressoras", imagem: "assets/img/impressoras/multifuncional-epson-l6490/multifuncional-epson-l6490-img1.webp", link: "/produtos/impressora/epson-l6490-ecotank.html", badge: "Mais vistos" },
+
+        // ---- Assistentes ----
+        { nome: "Echo Show 15 Amazon Smart Display Full HD 15,6'' Com Alexa", categoria: "Assistentes", imagem: "assets/img/assistentes/echo-show-15-amazon-smart-img1.webp", link: "https://meli.la/2ibDgKP" },
+        { nome: "Amazon Echo Show 5 (3rd Gen) com Assistente Virtual Alexa", categoria: "Assistentes", imagem: "assets/img/assistentes/amazon-echo-show-5-3rd-gen-img2.webp", link: "https://meli.la/2nwYYoX" },
+        { nome: "Echo Spot 2024 Com Alexa Despertador Inteligente", categoria: "Assistentes", imagem: "assets/img/assistentes/echo-spot-2024-com-alexa-img4.webp", link: "https://meli.la/2oGEy4F", badge: "Mais vistos" },
+        { nome: "Echo Dot (5ª Geração) Smart Speaker Com Alexa Amazon", categoria: "Assistentes", imagem: "assets/img/assistentes/echo-dot-5-geraco-smart-img1.webp", link: "https://meli.la/1UciedM" },
+
+        // ---- Viagem ----
+        { nome: "Travesseiro Viagem Almofada Inflável Pés Carro Avião", categoria: "Viagem", imagem: "/assets/img/viagem/5-travesseiro-viagem-almofada-inflavel.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Carteira Porta Passaporte Documentos Viagem Alta Qualidade", categoria: "Viagem", imagem: "/assets/img/viagem/6-carteira-porta-passaporte-documentos.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Mini Umidificador Portátil de Ar Egg Uso Doméstico Pequeno", categoria: "Viagem", imagem: "/assets/img/viagem/7-mini-umidificador-portatil-de-ar.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Power Bank 20000mAh Carregador Portátil Carga Rápida 22.5W USB-C", categoria: "Viagem", imagem: "/assets/img/viagem/8-power-bank-20000mah-carregador-portatil.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+
+        // ---- Esportes ----
+        { nome: "Tênis Kappa Pulse Rx Unissex Corrida Conforto", categoria: "Esportes", imagem: "/assets/img/esportes/tenis/1-tenis-kappa-pulse-rx-unissex-corrida-conforto.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Tênis Fila Racer Speedzone Corrida Caminhada Academia", categoria: "Esportes", imagem: "/assets/img/esportes/tenis/2-tenis-fila-racer-speedzone-corrida-caminhada.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Tênis Esportivo Masculino Delta Olympikus", categoria: "Esportes", imagem: "/assets/img/esportes/tenis/3-tenis-esportivo-masculino-delta-olympikus.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+        { nome: "Kit 2 Joelheira Alta Compressão Esportes Alívio Dor", categoria: "Esportes", imagem: "/assets/img/esportes/tenis/4-tenis-new-speed-esporte-masculino-ideal-para-corridas.webp", link: "https://www.mercadolivre.com.br/social/febr920238?matt_word=febr920238&matt_tool=34278727&forceInApp=true", badge: "Mais vistos" },
+    ];
+
+    const grade = document.getElementById("grade-produtos");
+    const pillsWrap = document.getElementById("categorias-pill");
+    const estadoVazio = document.getElementById("estado-vazio");
+    const contador = document.getElementById("contador-resultados");
+    const campoBusca = document.getElementById("campo-busca");
+    const formBusca = document.getElementById("form-busca");
+
+    let categoriaAtiva = "Todos";
+
+    function montarPills() {
+        const categorias = ["Todos", ...new Set(PRODUTOS.map(p => p.categoria))];
+        pillsWrap.innerHTML = categorias.map(cat =>
+            `<button type="button" data-categoria="${cat}" class="${cat === categoriaAtiva ? "active" : ""}">${cat}</button>`
+        ).join("");
+
+        pillsWrap.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                categoriaAtiva = btn.getAttribute("data-categoria");
+                pillsWrap.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                renderizar();
+            });
+        });
+    }
+
+    function cardHTML(p) {
+        const alvo = p.link.startsWith("http") ? ' target="_blank" rel="noopener sponsored"' : "";
+        const badge = p.badge ? `<span class="badge">${p.badge}</span>` : "";
+        return `
+            <div class="card">
+                ${badge}
+                <a href="${p.link}"${alvo}>
+                    <img src="${p.imagem}" alt="Produto" loading="lazy">
+                    <h3>${p.nome}</h3>
+                </a>
+            </div>`;
+    }
+
+    function renderizar() {
+        const termo = campoBusca.value.trim().toLowerCase();
+
+        const filtrados = PRODUTOS.filter(p => {
+            const passaCategoria = categoriaAtiva === "Todos" || p.categoria === categoriaAtiva;
+            const passaBusca = !termo || p.nome.toLowerCase().includes(termo);
+            return passaCategoria && passaBusca;
+        });
+
+        grade.innerHTML = filtrados.map(cardHTML).join("");
+        estadoVazio.style.display = filtrados.length === 0 ? "block" : "none";
+        contador.textContent = `${filtrados.length} produto${filtrados.length === 1 ? "" : "s"} encontrado${filtrados.length === 1 ? "" : "s"}`;
+    }
+
+    formBusca.addEventListener("submit", (e) => {
+        e.preventDefault();
+        renderizar();
+    });
+    campoBusca.addEventListener("input", renderizar);
+
+    // Se veio de /produtos.html?q=algo (busca feita na home)
+    const parametros = new URLSearchParams(window.location.search);
+    if (parametros.get("q")) {
+        campoBusca.value = parametros.get("q");
+    }
+
+    montarPills();
+    renderizar();
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</body>
+</html>

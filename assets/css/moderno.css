@@ -1,0 +1,297 @@
+/* =========================================================
+   MODERNO.CSS
+   Camada visual adicional, usada só em index.html e produtos.html.
+   Não altera nada em style.css / produtos.css, então as demais
+   páginas do site continuam exatamente como estão.
+========================================================= */
+
+:root {
+    --azul: #0d6efd;
+    --azul-escuro: #084298;
+    --verde: #1eaa5c;
+    --texto: #1a1d21;
+    --texto-suave: #5b6470;
+    --fundo-suave: #f5f7fa;
+    --borda: #e7eaef;
+    --raio: 14px;
+}
+
+body.pagina-moderna {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: var(--texto);
+}
+
+/* =========================
+   SKELETON DO MENU
+   Ocupa a altura da navbar antes dela carregar, pra não
+   ter "pulo" de layout nem sensação de página quebrada.
+========================= */
+#menu {
+    min-height: 56px;
+}
+
+#menu:empty::before {
+    content: "";
+    display: block;
+    height: 56px;
+    background: linear-gradient(90deg, #f0f2f5 25%, #e9ecef 37%, #f0f2f5 63%);
+    background-size: 400% 100%;
+    animation: skeleton 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    position: relative;
+    background: var(--fundo-suave);
+}
+
+.hero .banner-container {
+    margin: 0 auto;
+    border-radius: 0;
+    max-width: 100%;
+}
+
+.hero-search {
+    position: relative;
+    z-index: 5;
+    max-width: 720px;
+    margin: -30px auto 40px;
+    padding: 0 16px;
+}
+
+.hero-search form {
+    display: flex;
+    gap: 8px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(13, 34, 64, 0.15);
+    border: 1px solid var(--borda);
+}
+
+.hero-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 18px;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: transparent;
+}
+
+.hero-search button {
+    border: none;
+    background: var(--azul);
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.hero-search button:hover {
+    background: var(--azul-escuro);
+}
+
+@media (max-width: 576px) {
+    .hero-search form {
+        flex-wrap: wrap;
+        border-radius: 20px;
+    }
+    .hero-search button {
+        width: 100%;
+    }
+}
+
+/* =========================
+   PÍLULAS DE CATEGORIA
+========================= */
+.categorias-pill {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 4px 16px 18px;
+    scrollbar-width: none;
+}
+
+.categorias-pill::-webkit-scrollbar {
+    display: none;
+}
+
+.categorias-pill a,
+.categorias-pill button {
+    flex: 0 0 auto;
+    border: 1px solid var(--borda);
+    background: #fff;
+    color: var(--texto);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.categorias-pill a:hover,
+.categorias-pill button:hover {
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.categorias-pill button.active {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: #fff;
+}
+
+/* =========================
+   SEÇÕES / TÍTULOS
+========================= */
+.secao {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 16px;
+}
+
+.secao-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.secao-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.secao-header a {
+    color: var(--azul);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.secao-header a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   FAIXAS DE DESTAQUE (ícones)
+========================= */
+.faixa-vantagens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 1200px;
+    margin: 10px auto 0;
+    padding: 0 16px;
+}
+
+.vantagem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--fundo-suave);
+    border-radius: var(--raio);
+    padding: 16px;
+}
+
+.vantagem .icone {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.vantagem strong {
+    display: block;
+    font-size: 0.92rem;
+}
+
+.vantagem span {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+/* =========================
+   PRODUTOS.HTML — BARRA DE FILTRO
+========================= */
+.filtro-barra {
+    position: sticky;
+    top: 70px;
+    z-index: 20;
+    background: #fff;
+    border-bottom: 1px solid var(--borda);
+    padding-top: 12px;
+}
+
+.filtro-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px 8px;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.produtos-vazio {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.produtos-vazio strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--texto);
+    margin-bottom: 6px;
+}
+
+/* =========================
+   CTA NEWSLETTER
+========================= */
+.cta-newsletter {
+    background: linear-gradient(90deg, var(--azul), var(--azul-escuro));
+    color: #fff;
+    border-radius: var(--raio);
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 34px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-newsletter h3 {
+    margin: 0 0 6px;
+    font-size: 1.3rem;
+}
+
+.cta-newsletter p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.92rem;
+}
