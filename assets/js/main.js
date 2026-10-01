@@ -1,73 +1,126 @@
 // Carregar menu
 fetch("/includes/nav.html")
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao carregar o menu.");
+        }
+        return response.text();
+    })
     .then(data => {
-        document.getElementById("menu").innerHTML = data;
+        const menu = document.getElementById("menu");
+
+        if (menu) {
+            menu.innerHTML = data;
+        }
+    })
+    .catch(error => {
+        console.error("Erro ao carregar o menu:", error);
     });
 
-// Carregar footer
+// Carregar menu
 fetch("/includes/footer.html")
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao carregar o footer.");
+        }
+        return response.text();
+    })
     .then(data => {
-        document.getElementById("footer").innerHTML = data;
+        const footer = document.getElementById("footer");
+
+        if (footer) {
+            footer.innerHTML = data;
+        }
+    })
+    .catch(error => {
+        console.error("Erro ao carregar o footer:", error);
     });
 
 // =========================
 // SLIDER BANNER
 // =========================
 
-const slides = document.querySelectorAll(".banner-slide");
-const prevBtn = document.querySelector(".prev");
-const nextBtn = document.querySelector(".next");
-const indicators = document.querySelectorAll(".indicator");
+document.addEventListener("DOMContentLoaded", () => {
 
-let currentIndex = 0;
+    const slides = document.querySelectorAll(".banner-slide");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    const indicators = document.querySelectorAll(".indicator");
 
-// Carrega a imagem somente quando o slide for exibido.
-// Isso evita baixar todos os banners logo na abertura da página.
-function loadSlideImage(index) {
-    const img = slides[index]?.querySelector("img[data-src]");
-
-    if (img && !img.src) {
-        img.src = img.dataset.src;
-        img.removeAttribute("data-src");
+    if (!slides.length) {
+        return;
     }
-}
 
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    indicators.forEach(ind => ind.classList.remove("active"));
+    let currentIndex = 0;
 
-    loadSlideImage(index);
+    function showSlide(index) {
 
-    slides[index].classList.add("active");
-    indicators[index].classList.add("active");
+        // Garante que o índice fique dentro do limite
+        if (index < 0) {
+            index = slides.length - 1;
+        }
 
-    currentIndex = index;
-}
+        if (index >= slides.length) {
+            index = 0;
+        }
 
-// Primeiro banner aparece imediatamente.
-showSlide(0);
+        slides.forEach(slide => {
+            slide.classList.remove("active");
+        });
 
-function nextSlide() {
-    const newIndex = (currentIndex + 1) % slides.length;
-    showSlide(newIndex);
-}
+        indicators.forEach(indicator => {
+            indicator.classList.remove("active");
+        });
 
-function prevSlide() {
-    const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(newIndex);
-}
+        slides[index].classList.add("active");
 
-nextBtn.addEventListener("click", nextSlide);
-prevBtn.addEventListener("click", prevSlide);
+        if (indicators[index]) {
+            indicators[index].classList.add("active");
+        }
 
-indicators.forEach(indicator => {
-    indicator.addEventListener("click", () => {
-        const index = parseInt(indicator.getAttribute("data-index"), 10);
-        showSlide(index);
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    // Primeiro banner
+    showSlide(0);
+
+    // Botão próximo
+    if (nextBtn) {
+        nextBtn.addEventListener("click", nextSlide);
+    }
+
+    // Botão anterior
+    if (prevBtn) {
+        prevBtn.addEventListener("click", prevSlide);
+    }
+
+    // Indicadores
+    indicators.forEach(indicator => {
+
+        indicator.addEventListener("click", () => {
+
+            const index = parseInt(
+                indicator.getAttribute("data-index"),
+                10
+            );
+
+            if (!Number.isNaN(index)) {
+                showSlide(index);
+            }
+
+        });
+
     });
-});
 
-// Troca automática a cada 5 segundos.
-setInterval(nextSlide, 5000);
+    // Troca automática
+    setInterval(nextSlide, 5000);
+
+});
