@@ -38,6 +38,11 @@
     font-size: 0.72rem; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--green); font-weight: 600;
   }
+  .font-display-nome {
+  font-family: serif !important;
+  font-weight: 400; 
+  letter-spacing: -0.02em;
+  }
   .nav-link { position: relative; transition: color 0.3s; }
   .nav-link::after {
     content: ''; position: absolute; bottom: -5px; left: 0;
