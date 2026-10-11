@@ -34,6 +34,7 @@ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='ht
 z-index: 9999;
 }
 .font-display { font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.02em; }
+.font-display-nome {font-family: serif !important;font-weight: 400; letter-spacing: -0.02em;}
 .eyebrow {
 font-size: 0.72rem; letter-spacing: 0.22em;
 text-transform: uppercase; color: var(--green); font-weight: 600;
