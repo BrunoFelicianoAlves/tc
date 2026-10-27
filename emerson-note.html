@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b4fa8">
+  <meta name="description" content="Confira notebooks seminovos por marca, memória, SSD, tela e preço. Pesquise e filtre os modelos disponíveis.">
+  <title>Notebooks | Encontre o seu próximo computador</title>
+  <style>
+    :root {
+      --blue-950: #082e63;
+      --blue-900: #0b3d82;
+      --blue-800: #0b4fa8;
+      --blue-700: #1263c7;
+      --blue-600: #2479de;
+      --blue-100: #e8f2ff;
+      --blue-050: #f4f8ff;
+      --white: #ffffff;
+      --ink: #17283f;
+      --muted: #64748b;
+      --line: #dce7f5;
+      --surface: #f7faff;
+      --shadow: 0 12px 32px rgba(11, 61, 130, .08);
+      --shadow-hover: 0 18px 42px rgba(11, 61, 130, .16);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #70adff; outline-offset: 3px; }
+    .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { background: var(--blue-950); color: #eaf3ff; font-size: .82rem; }
+    .topbar-inner { min-height: 36px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .topbar p { margin:0; }
+    .site-header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+    .nav-inner { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; min-width:0; }
+    .brand-mark { display:grid; place-items:center; width:46px; height:46px; flex:0 0 46px; border-radius:14px; color:white; background:linear-gradient(135deg,var(--blue-700),var(--blue-950)); font-size:1.35rem; font-weight:900; box-shadow:0 7px 16px rgba(18,99,199,.2); }
+    .brand-text { display:grid; line-height:1.2; }
+    .brand-text strong { color:var(--blue-950); font-size:1.05rem; letter-spacing:-.03em; }
+    .brand-text span { margin-top:4px; color:var(--muted); font-size:.78rem; }
+    .nav-links { display:flex; align-items:center; gap:8px; }
+    .nav-links a { padding:10px 13px; border-radius:10px; color:#334a68; text-decoration:none; font-weight:650; font-size:.92rem; transition:background .2s,color .2s; }
+    .nav-links a:hover { background:var(--blue-050); color:var(--blue-800); }
+    .nav-links .nav-highlight { color:white; background:var(--blue-800); }
+    .nav-links .nav-highlight:hover { background:var(--blue-900); color:white; }
+    .menu-toggle { display:none; border:1px solid var(--line); background:white; border-radius:10px; padding:9px 12px; color:var(--blue-900); font-weight:750; }
+    .hero { color:white; background: radial-gradient(circle at 88% 18%, rgba(79,157,255,.27), transparent 28%), linear-gradient(120deg,var(--blue-950),var(--blue-800)); overflow:hidden; }
+    .hero-inner { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(250px,.9fr); gap:40px; align-items:center; padding-block:clamp(48px,7vw,82px); }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:#bcdcff; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; font-weight:800; }
+    .eyebrow:before { content:""; width:22px; height:2px; background:#7bb8ff; border-radius:3px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:720px; margin:16px 0 18px; color:white; font-size:clamp(2.15rem,5.2vw,4.25rem); line-height:1.05; letter-spacing:-.055em; }
+    .hero-copy > p { max-width:590px; color:#dfedff; font-size:clamp(1rem,1.6vw,1.15rem); }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .button { display:inline-flex; min-height:46px; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border:1px solid transparent; border-radius:11px; text-decoration:none; font-weight:800; font-size:.92rem; cursor:pointer; transition:transform .18s,background .18s,box-shadow .18s; }
+    .button:hover { transform:translateY(-2px); }
+    .button-primary { color:var(--blue-950); background:white; box-shadow:0 9px 22px rgba(0,0,0,.13); }
+    .button-primary:hover { background:#edf5ff; }
+    .button-ghost { color:white; border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.07); }
+    .button-ghost:hover { background:rgba(255,255,255,.14); }
+    .hero-device { position:relative; min-height:275px; display:grid; place-items:center; }
+    .device-glow { position:absolute; width:min(80%,330px); aspect-ratio:1; border-radius:50%; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); }
+    .laptop-art { position:relative; width:min(100%,400px); filter:drop-shadow(0 22px 24px rgba(0,0,0,.25)); }
+    .laptop-screen { margin-inline:auto; width:78%; aspect-ratio:1.55; padding:8px; border:5px solid #c8d5e7; border-bottom-width:9px; border-radius:12px 12px 5px 5px; background:#0d2c55; transform:perspective(450px) rotateY(-8deg); }
+    .screen-content { height:100%; border-radius:3px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:13%; background:linear-gradient(135deg,#e9f4ff,#fff); color:var(--blue-900); }
+    .screen-content small { font-weight:800; letter-spacing:.16em; font-size:.58rem; }
+    .screen-content strong { margin-top:7px; font-size:clamp(1.1rem,3vw,2rem); line-height:1.05; letter-spacing:-.06em; }
+    .screen-lines { width:80%; margin-top:12px; display:grid; gap:5px; }
+    .screen-lines i { display:block; height:4px; border-radius:4px; background:#c4ddfb; }
+    .screen-lines i:nth-child(2) { width:74%; }
+    .laptop-base { width:100%; height:13px; border-radius:3px 3px 14px 14px; background:linear-gradient(#e4edf8,#91a8c7); clip-path:polygon(8% 0,92% 0,100% 78%,96% 100%,4% 100%,0 78%); }
+    .hero-pill { position:absolute; display:flex; align-items:center; gap:10px; padding:12px 15px; border:1px solid rgba(255,255,255,.35); border-radius:13px; background:rgba(255,255,255,.13); backdrop-filter:blur(10px); color:white; font-size:.84rem; font-weight:750; }
+    .hero-pill b { display:grid; place-items:center; width:30px; height:30px; color:var(--blue-950); border-radius:9px; background:white; }
+    .pill-one { top:4%; left:-2%; }.pill-two { right:-2%; bottom:7%; }
+    .trust-strip { background:white; border-bottom:1px solid var(--line); }
+    .trust-inner { display:grid; grid-template-columns:repeat(3,1fr); }
+    .trust-item { display:flex; align-items:center; gap:13px; padding:20px 22px; border-right:1px solid var(--line); }
+    .trust-item:first-child { padding-left:0; }
+    .trust-item:last-child { border-right:0; }
+    .trust-icon { 
+      width:42px; 
+      height:42px; flex:0 0 42px; display:grid; place-items:center; background:var(--blue-100); color:var(--blue-800); 
+      border-radius:12px; font-weight:900; font-size:1.05rem; }
+    .trust-icon-none {display: none; }
+    .trust-item strong { display:block; font-size:.92rem; }
+    .trust-item span { display:block; color:var(--muted); font-size:.79rem; margin-top:2px; }
+    .catalog-section { padding:58px 0 82px; }
+    .catalog-heading { margin-bottom:26px; display:flex; justify-content:space-between; align-items:flex-end; gap:20px; }
+    .section-kicker { display:block; color:var(--blue-700); text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; font-weight:850; margin-bottom:10px; }
+    h2 { margin-bottom:10px; color:var(--blue-950); font-size:clamp(1.8rem,3.5vw,2.65rem); line-height:1.12; letter-spacing:-.045em; }
+    .catalog-heading p { margin:0; color:var(--muted); }
+    .count-badge { flex:0 0 auto; display:inline-flex; align-items:center; gap:7px; padding:9px 12px; border-radius:999px; background:var(--blue-100); color:var(--blue-900); font-weight:800; font-size:.84rem; }
+    .catalog-layout { display:grid; grid-template-columns:250px minmax(0,1fr); gap:24px; align-items:start; }
+    .filters { background:white; border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:0 5px 20px rgba(11,61,130,.035); position:sticky; top:100px; }
+    .filter-top { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+    .filter-top h3 { margin:0; font-size:1.05rem; color:var(--blue-950); }
+    .text-button { color:var(--blue-700); background:none; border:0; cursor:pointer; font-weight:750; font-size:.82rem; padding:4px 0; }
+    .filter-group { padding:18px 0 4px; border-bottom:1px solid #edf2fa; }
+    .filter-group:last-child { border-bottom:0; padding-bottom:0; }
+    .filter-label { display:block; margin-bottom:12px; color:#334a68; font-size:.88rem; font-weight:850; }
+    .brand-options { display:grid; gap:10px; }
+    .check-option { display:flex; align-items:center; gap:9px; font-size:.9rem; color:#445670; cursor:pointer; }
+    .check-option input { width:16px; height:16px; accent-color:var(--blue-700); }
+    .price-inputs { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .price-inputs label { color:var(--muted); font-size:.73rem; }
+    .price-inputs input { display:block; width:100%; min-width:0; margin-top:5px; border:1px solid var(--line); border-radius:9px; padding:10px 8px; color:var(--ink); background:white; }
+    .filter-apply { display:none; }
+    .catalog-main { min-width:0; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:18px; }
+    .searchbox { position:relative; flex:1; min-width:0; }
+    .searchbox span { position:absolute; left:15px; top:50%; transform:translateY(-50%); color:var(--blue-700); font-size:1.15rem; pointer-events:none; }
+    .searchbox input { display:block; width:100%; min-height:49px; padding:12px 15px 12px 44px; border:1px solid var(--line); border-radius:12px; background:white; color:var(--ink); outline:none; box-shadow:0 4px 14px rgba(11,61,130,.025); }
+    .searchbox input:focus { border-color:#7eb6f7; box-shadow:0 0 0 4px rgba(36,121,222,.1); }
+    .sort-select { min-height:49px; max-width:190px; border:1px solid var(--line); background:white; color:#344b68; padding:10px 12px; border-radius:12px; }
+    .active-filters { display:flex; align-items:center; flex-wrap:wrap; gap:7px; min-height:0; margin:0 0 16px; }
+    .filter-chip { display:inline-flex; align-items:center; gap:7px; padding:6px 9px; border-radius:999px; background:var(--blue-100); color:var(--blue-900); font-size:.78rem; font-weight:750; }
+    .filter-chip button { border:0; padding:0; background:none; color:inherit; cursor:pointer; font-size:1rem; line-height:1; }
+    .product-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .product-card { display:flex; flex-direction:column; min-width:0; overflow:hidden; background:white; border:1px solid var(--line); border-radius:16px; box-shadow:0 5px 18px rgba(11,61,130,.04); transition:transform .2s,border-color .2s,box-shadow .2s; }
+    .product-card:hover { transform:translateY(-4px); border-color:#b4d3f6; box-shadow:var(--shadow-hover); }
+    .product-visual { min-height:150px; display:grid; place-items:center; position:relative; overflow:hidden; background:linear-gradient(145deg,#f2f7ff,#e2efff); border-bottom:1px solid #e6effb; }
+    .product-visual:before { content:""; position:absolute; width:150px; height:150px; border-radius:50%; border:1px solid rgba(18,99,199,.12); box-shadow:0 0 0 18px rgba(18,99,199,.025),0 0 0 36px rgba(18,99,199,.02); }
+    .mini-laptop { z-index:1; width:76%; max-width:190px; filter:drop-shadow(0 10px 9px rgba(11,61,130,.12)); }
+    .mini-screen { position:relative; display:flex; align-items:center; justify-content:center; width:78%; aspect-ratio:1.55; margin:auto; padding:6px; border:4px solid #8da2bd; border-bottom-width:7px; border-radius:7px 7px 3px 3px; background:#c6d8ec; }
+    .mini-screen-inner { display:grid; place-items:center; width:100%; height:100%; background:linear-gradient(135deg,#0d4c99,#63a8f5); color:#fff; font-weight:900; font-size:.7rem; letter-spacing:.11em; }
+    .mini-base { height:9px; background:linear-gradient(#c7d5e7,#8298b3); clip-path:polygon(10% 0,90% 0,100% 76%,96% 100%,4% 100%,0 76%); border-radius:2px 2px 7px 7px; }
+    .stock-tag { position:absolute; top:12px; left:12px; z-index:2; color:var(--blue-900); background:rgba(255,255,255,.9); border:1px solid #d8e8fa; border-radius:7px; padding:4px 7px; font-size:.68rem; font-weight:850; }
+    .product-body { display:flex; flex-direction:column; flex:1; padding:16px; }
+    .product-brand { color:var(--blue-700); text-transform:uppercase; letter-spacing:.11em; font-size:.68rem; font-weight:900; margin-bottom:8px; }
+    .product-title { margin:0 0 12px; min-height:45px; color:#18365d; font-size:1rem; line-height:1.35; letter-spacing:-.02em; overflow-wrap:anywhere; }
+    .specs { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin:0 0 15px; }
+    .spec { padding:8px 9px; background:#f5f8fd; border-radius:8px; min-width:0; }
+    .spec span { display:block; color:var(--muted); font-size:.68rem; }
+    .spec strong { display:block; margin-top:2px; color:#2f4664; font-size:.8rem; overflow-wrap:anywhere; }
+    .product-bottom { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin-top:auto; padding-top:13px; border-top:1px solid #edf2f9; }
+    .price-label { display:block; color:var(--muted); font-size:.7rem; margin-bottom:1px; }
+    .price { display:block; color:var(--blue-900); font-weight:900; font-size:1.28rem; letter-spacing:-.04em; line-height:1.15; white-space:nowrap; }
+    .details-button { padding:9px 10px; border:0; border-radius:9px; color:white; background:var(--blue-800); font-size:.76rem; font-weight:800; cursor:pointer; white-space:nowrap; }
+    .details-button:hover { background:var(--blue-950); }
+    .empty-state { display:none; padding:50px 24px; text-align:center; background:white; border:1px dashed #b7cce6; border-radius:16px; }
+    .empty-state .empty-icon { font-size:2rem; margin-bottom:8px; }
+    .empty-state h3 { color:var(--blue-950); margin-bottom:6px; }
+    .empty-state p { color:var(--muted); margin-bottom:18px; }
+    .results-footer { display:flex; justify-content:space-between; gap:15px; color:var(--muted); font-size:.82rem; margin-top:20px; }
+    .footer { background:var(--blue-950); color:#d9e9ff; padding:48px 0 0; }
+    .footer-grid { display:grid; grid-template-columns:1.25fr .8fr .8fr; gap:36px; padding-bottom:34px; }
+    .footer .brand-text strong { color:white; }
+    .footer .brand-text span { color:#b8d2f3; }
+    .footer-about p { max-width:390px; margin-top:18px; font-size:.9rem; color:#b8d2f3; }
+    .footer h3 { color:white; font-size:.95rem; margin-bottom:14px; letter-spacing:0; }
+    .footer-links { display:grid; gap:9px; }
+    .footer-links a { width:fit-content; text-decoration:none; color:#c3d9f8; font-size:.88rem; }
+    .footer-links a:hover { color:white; text-decoration:underline; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.14); padding:17px 0; color:#a9c6eb; font-size:.79rem; }
+    .footer-bottom-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .footer-bottom p { margin:0; }
+    .modal-backdrop { display:none; position:fixed; inset:0; z-index:100; align-items:center; justify-content:center; padding:20px; background:rgba(5,24,51,.65); }
+    .modal-backdrop.open { display:flex; }
+    .modal { width:min(480px,100%); position:relative; padding:28px; border-radius:20px; background:white; box-shadow:0 25px 80px rgba(0,0,0,.25); }
+    .modal-close { position:absolute; top:12px; right:12px; width:36px; height:36px; border:0; border-radius:10px; color:var(--blue-900); background:var(--blue-050); font-size:1.3rem; cursor:pointer; }
+    .modal h2 { padding-right:30px; font-size:1.6rem; }
+    .modal p { color:var(--muted); }
+    .modal-specs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:20px 0; }
+    .modal-specs div { padding:12px; border-radius:10px; background:var(--blue-050); }
+    .modal-specs span { display:block; color:var(--muted); font-size:.75rem; }
+    .modal-specs strong { color:var(--blue-950); }
+    .modal-price { color:var(--blue-800); font-size:1.8rem; font-weight:900; margin-bottom:18px; }
+    .modal .button { width:100%; background:var(--blue-800); color:white; }
+    @media (max-width:1050px) {
+      .catalog-layout { grid-template-columns:220px minmax(0,1fr); gap:18px; }
+      .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .nav-links { gap:1px; }
+      .nav-links a { padding:9px 10px; font-size:.86rem; }
+    }
+    @media (max-width:760px) {
+      .container { width:min(100% - 32px,600px); }
+      .topbar-inner { justify-content:center; text-align:center; }
+      .topbar-inner p:last-child { display:none; }
+      .nav-inner { min-height:69px; flex-wrap:wrap; gap:10px; padding-block:10px; }
+      .brand-mark { width:41px; height:41px; flex-basis:41px; border-radius:12px; }
+      .brand-text strong { font-size:.95rem; }
+      .menu-toggle { display:block; margin-left:auto; }
+      .nav-links { display:none; flex-direction:column; align-items:stretch; width:100%; padding:4px 0 8px; }
+      .nav-links.open { display:flex; }
+      .nav-links a { padding:12px 13px; font-size:.93rem; }
+      .nav-links .nav-highlight { text-align:center; margin-top:4px; }
+      .hero-inner { grid-template-columns:1fr; padding-block:42px 34px; gap:15px; }
+      .hero-copy { order:1; }
+      .hero-device { order:0; min-height:230px; }
+      .laptop-art { max-width:320px; }
+      .hero-pill { padding:9px 10px; font-size:.75rem; }
+      .hero-pill b { width:26px; height:26px; }
+      .pill-one { left:0; }.pill-two { right:0; }
+      h1 { font-size:clamp(2.4rem,11vw,3.7rem); }
+      .hero-actions .button { flex:1 1 auto; }
+      .trust-inner { grid-template-columns:1fr; padding-block:6px; }
+      .trust-item,.trust-item:first-child { padding:12px 0; border-right:0; border-bottom:1px solid var(--line); }
+      .trust-item:last-child { border-bottom:0; }
+      .catalog-section { padding:44px 0 58px; }
+      .catalog-heading { align-items:flex-start; flex-direction:column; gap:12px; }
+      .catalog-layout { grid-template-columns:1fr; }
+      .filters { position:static; padding:18px; }
+      .filter-top { padding-bottom:12px; }
+      .filter-content { display:none; }
+      .filters.expanded .filter-content { display:block; }
+      .filter-apply { display:inline-flex; margin-top:14px; }
+      .toolbar { flex-direction:column; align-items:stretch; }
+      .sort-select { max-width:none; width:100%; }
+      .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; }
+      .product-visual { min-height:120px; }
+      .product-body { padding:12px; }
+      .product-title { font-size:.91rem; min-height:50px; }
+      .specs { gap:5px; }
+      .spec { padding:7px 6px; }
+      .spec strong { font-size:.74rem; }
+      .product-bottom { flex-direction:column; align-items:stretch; gap:10px; }
+      .price { font-size:1.18rem; }
+      .details-button { width:100%; padding:10px 7px; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:28px 20px; }
+      .footer-about { grid-column:1/-1; }
+      .footer-bottom-inner { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width:390px) {
+      .container { width:calc(100% - 24px); }
+      .product-grid { grid-template-columns:1fr; }
+      .product-visual { min-height:155px; }
+      .product-body { padding:16px; }
+      .product-title { min-height:0; font-size:1rem; }
+      .product-bottom { flex-direction:row; align-items:flex-end; }
+      .details-button { width:auto; }
+      .footer-grid { grid-template-columns:1fr; }
+      .footer-about { grid-column:auto; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <p>Notebooks selecionados para acompanhar sua rotina</p>
+      <p>Pesquisa simples · Filtros rápidos · Preços em reais</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="Notebook Store, página inicial">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-text"><strong>Notebook Store</strong><span>Encontre o seu próximo computador</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">☰ Menu</button>
+      <nav class="nav-links" id="nav-links" aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#catalogo">Notebooks</a>
+        <a href="#vantagens">Como escolher</a>
+        <a class="nav-highlight" href="#catalogo">Ver ofertas ↓</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Tecnologia para o seu dia a dia</span>
+          <h1>Seu próximo notebook está aqui.</h1>
+          <p>Compare modelos por marca, memória, armazenamento e preço. Encontre uma opção que combine com o seu trabalho, estudo ou rotina.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">Explorar notebooks <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="#vantagens">Ver dicas de compra</a>
+          </div>
+        </div>
+        <div class="hero-device" aria-label="Ilustração de um notebook">
+          <div class="device-glow"></div>
+          <div class="laptop-art" aria-hidden="true">
+            <div class="laptop-screen">
+              <div class="screen-content"><small>NOTEBOOK STORE</small><strong>IDEIAS<br>EM MOVIMENTO.</strong><div class="screen-lines"><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="hero-pill pill-one"><b>✓</b><span>Compare modelos</span></div>
+          <div class="hero-pill pill-two"><b>R$</b><span>Encontre seu preço</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" id="vantagens" aria-label="Benefícios da página">
+      <div class="container trust-inner">
+        <div class="trust-item"><span class="trust-icon-none" aria-hidden="true">⌕</span><div><strong>Busca rápida</strong><span>Encontre marca ou processador</span></div></div>
+        <div class="trust-item"><span class="trust-icon-none" aria-hidden="true">▤</span><div><strong>Especificações claras</strong><span>Memória, SSD e tamanho da tela</span></div></div>
+        <div class="trust-item"><span class="trust-icon-none" aria-hidden="true">R$</span><div><strong>Compare os valores</strong><span>Organize do menor ao maior preço</span></div></div>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="container">
+        <div class="catalog-heading">
+          <div><span class="section-kicker">Catálogo de produtos</span><h2>Encontre seu notebook</h2><p>Use a busca e os filtros para refinar os resultados.</p></div>
+          <span class="count-badge"><span aria-hidden="true">▦</span> <span id="total-badge">23 modelos</span></span>
+        </div>
+
+        <div class="catalog-layout">
+          <aside class="filters" id="filters-panel" aria-label="Filtros de produtos">
+            <div class="filter-top"><h3>Filtrar produtos</h3><button class="text-button" id="clear-filters" type="button">Limpar tudo</button></div>
+            <div class="filter-content" id="filter-content">
+              <div class="filter-group">
+                <span class="filter-label">Marca</span>
+                <div class="brand-options">
+                  <label class="check-option"><input type="checkbox" name="brand" value="HP"> HP</label>
+                  <label class="check-option"><input type="checkbox" name="brand" value="Dell"> Dell</label>
+                  <label class="check-option"><input type="checkbox" name="brand" value="Lenovo"> Lenovo</label>
+                  <label class="check-option"><input type="checkbox" name="brand" value="Acer"> Acer</label>
+                </div>
+              </div>
+              <div class="filter-group">
+                <span class="filter-label">Faixa de preço</span>
+                <div class="price-inputs">
+                  <label>Preço mínimo<input type="number" id="min-price" inputmode="numeric" min="0" placeholder="R$ 0"></label>
+                  <label>Preço máximo<input type="number" id="max-price" inputmode="numeric" min="0" placeholder="R$ 2.000"></label>
+                </div>
+                <button class="button button-primary filter-apply" type="button" id="apply-filters">Aplicar filtros</button>
+              </div>
+            </div>
+          </aside>
+
+          <div class="catalog-main">
+            <div class="toolbar">
+              <label class="searchbox"><span aria-hidden="true">⌕</span><input type="search" id="search-input" placeholder="Buscar por marca, modelo ou processador..." aria-label="Buscar notebooks"></label>
+              <label class="sr-only" for="sort-select" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Ordenar resultados</label>
+              <select class="sort-select" id="sort-select" aria-label="Ordenar resultados">
+                <option value="featured">Ordenar: Relevância</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+                <option value="ram-desc">Mais memória RAM</option>
+                <option value="screen-desc">Maior tela</option>
+                <option value="name-asc">Nome A–Z</option>
+              </select>
+            </div>
+            <div class="active-filters" id="active-filters" aria-live="polite"></div>
+            <div class="product-grid" id="product-grid" aria-live="polite"></div>
+            <div class="empty-state" id="empty-state">
+              <div class="empty-icon" aria-hidden="true">⌕</div>
+              <h3>Nenhum notebook encontrado</h3>
+              <p>Tente mudar os termos da busca ou remover algum filtro.</p>
+              <button class="button button-primary" id="empty-clear" type="button">Limpar filtros</button>
+            </div>
+            <div class="results-footer"><span id="results-count">Mostrando 23 de 23 modelos</span><span>Valores em reais (R$)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span class="brand-text"><strong>Notebook Store</strong><span>Encontre o seu próximo computador</span></span>
+        </a>
+        <p>Uma forma prática de visualizar e comparar notebooks por marca, especificações e preço. Consulte o vendedor para confirmar disponibilidade e condições antes da compra.</p>
+      </div>
+      <div><h3>Navegação</h3><div class="footer-links"><a href="#inicio">Início</a><a href="#catalogo">Catálogo de notebooks</a><a href="#vantagens">Dicas para escolher</a></div></div>
+      <div><h3>Informações</h3><div class="footer-links"><a href="#catalogo">Modelos e preços</a><a href="#catalogo">Filtros de marca</a><a href="#catalogo">Faixa de valores</a></div></div>
+    </div>
+    <div class="footer-bottom"><div class="container footer-bottom-inner"><p>© <span id="year"></span> Notebook Store. Todos os direitos reservados.</p><p>Layout responsivo · Azul e branco</p></div></div>
+  </footer>
+
+  <div class="modal-backdrop" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Fechar detalhes">×</button>
+      <span class="section-kicker" id="modal-brand">Notebook</span>
+      <h2 id="modal-title">Detalhes do notebook</h2>
+      <p>Confira as especificações informadas para este modelo.</p>
+      <div class="modal-specs" id="modal-specs"></div>
+      <div class="modal-price" id="modal-price"></div>
+      <button class="button" id="modal-done" type="button">Voltar ao catálogo</button>
+    </div>
+  </div>
+
+  <script>
+    const products = [{"name": "HP Probook i5-6300", "brand": "HP", "ram": 8, "storage": 240, "screen": 14, "price": 1490, "id": 1}, {"name": "HP Elitebook i5-6300", "brand": "HP", "ram": 8, "storage": 240, "screen": 14, "price": 1490, "id": 2}, {"name": "HP Elitebook i5-2520", "brand": "HP", "ram": 4, "storage": 120, "screen": 14, "price": 1150, "id": 3}, {"name": "HP Elitebook i5-6300", "brand": "HP", "ram": 8, "storage": 120, "screen": 14, "price": 1490, "id": 4}, {"name": "Dell Latitude E6430 i5-3380", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1290, "id": 5}, {"name": "Dell Inspiron i3-6006U", "brand": "Dell", "ram": 4, "storage": 230, "screen": 14, "price": 1490, "id": 6}, {"name": "Dell Inspiron i3-3217U", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1290, "id": 7}, {"name": "Dell Inspiron i3-3217U", "brand": "Dell", "ram": 5, "storage": 120, "screen": 14, "price": 1290, "id": 8}, {"name": "HP Probook i5-6300U", "brand": "HP", "ram": 12, "storage": 120, "screen": 14, "price": 1490, "id": 9}, {"name": "Dell Latitude E6430 i5-3380", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1290, "id": 10}, {"name": "Dell Latitude Core i5-4310", "brand": "Dell", "ram": 8, "storage": 240, "screen": 13, "price": 1390, "id": 11}, {"name": "Dell Inspiron 5458 Core i5-5200", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1390, "id": 12}, {"name": "Dell Latitude E5430 i5-3210", "brand": "Dell", "ram": 6, "storage": 240, "screen": 14, "price": 1290, "id": 13}, {"name": "Dell Latitude 3470 i5-6200", "brand": "Dell", "ram": 8, "storage": 240, "screen": 14, "price": 1490, "id": 14}, {"name": "Dell Latitude 5480 i5-8350", "brand": "Dell", "ram": 8, "storage": 240, "screen": 14, "price": 1750, "id": 15}, {"name": "Dell Latitude i5-2430", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1190, "id": 16}, {"name": "Acer Gateway i5-3337u", "brand": "Acer", "ram": 6, "storage": 120, "screen": 15.6, "price": 1750, "id": 17}, {"name": "Lenovo Thinkpad i5-8250", "brand": "Lenovo", "ram": 8, "storage": 240, "screen": 14, "price": 1750, "id": 18}, {"name": "Lenovo Thinkpad i5-8350", "brand": "Lenovo", "ram": 8, "storage": 120, "screen": 14, "price": 1750, "id": 19}, {"name": "Lenovo Thinkpad i5-8250", "brand": "Lenovo", "ram": 8, "storage": 240, "screen": 14, "price": 1750, "id": 20}, {"name": "Lenovo Thinkpad i7-7600", "brand": "Lenovo", "ram": 8, "storage": 240, "screen": 14, "price": 1720, "id": 21}, {"name": "Lenovo Thinkpad i5-4300", "brand": "Lenovo", "ram": 4, "storage": 120, "screen": 13, "price": 1290, "id": 22}, {"name": "Dell Latitude i5 7a. Geração", "brand": "Dell", "ram": 8, "storage": 120, "screen": 14, "price": 1720, "id": 23}];
+
+    const grid = document.getElementById('product-grid');
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('sort-select');
+    const minPriceInput = document.getElementById('min-price');
+    const maxPriceInput = document.getElementById('max-price');
+    const brandInputs = [...document.querySelectorAll('input[name="brand"]')];
+    const activeFilters = document.getElementById('active-filters');
+    const emptyState = document.getElementById('empty-state');
+    const resultsCount = document.getElementById('results-count');
+    const totalBadge = document.getElementById('total-badge');
+    const filtersPanel = document.getElementById('filters-panel');
+    const navLinks = document.getElementById('nav-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const modal = document.getElementById('product-modal');
+
+    const money = value => new Intl.NumberFormat('pt-BR', {
+      style: 'currency', currency: 'BRL', maximumFractionDigits: 2
+    }).format(value);
+
+    const normalize = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+    function laptopIllustration() {
+      return `<div class="product-visual" aria-hidden="true">
+        <span class="stock-tag">NOTEBOOK</span>
+        <div class="mini-laptop"><div class="mini-screen"><div class="mini-screen-inner">NOTEBOOK</div></div><div class="mini-base"></div></div>
+      </div>`;
+    }
+
+    function renderCards(list) {
+      grid.innerHTML = list.map(product => {
+        const screen = Number.isInteger(product.screen) ? `${product.screen}"` : `${product.screen.toLocaleString('pt-BR')}"`;
+        return `<article class="product-card">
+          ${laptopIllustration()}
+          <div class="product-body">
+            <span class="product-brand">${product.brand}</span>
+            <h3 class="product-title">${product.name}</h3>
+            <div class="specs">
+              <div class="spec"><span>Memória RAM</span><strong>${product.ram} GB</strong></div>
+              <div class="spec"><span>Armazenamento</span><strong>SSD ${product.storage} GB</strong></div>
+              <div class="spec"><span>Tela</span><strong>${screen}</strong></div>
+              <div class="spec"><span>Marca</span><strong>${product.brand}</strong></div>
+            </div>
+            <div class="product-bottom">
+              <div><span class="price-label">Valor</span><strong class="price">${money(product.price)}</strong></div>
+              <button class="details-button" type="button" data-details="${product.id}">Ver detalhes</button>
+            </div>
+          </div>
+        </article>`;
+      }).join('');
+
+      grid.querySelectorAll('[data-details]').forEach(button => {
+        button.addEventListener('click', () => openDetails(Number(button.dataset.details)));
+      });
+    }
+
+    function getFilteredProducts() {
+      const query = normalize(searchInput.value);
+      const selectedBrands = brandInputs.filter(input => input.checked).map(input => input.value);
+      const min = minPriceInput.value === '' ? -Infinity : Number(minPriceInput.value);
+      const max = maxPriceInput.value === '' ? Infinity : Number(maxPriceInput.value);
+
+      let list = products.filter(product => {
+        const haystack = normalize(`${product.name} ${product.brand} ${product.ram}gb ${product.storage}gb ssd ${product.screen}`);
+        return (!query || haystack.includes(query))
+          && (selectedBrands.length === 0 || selectedBrands.includes(product.brand))
+          && product.price >= min
+          && product.price <= max;
+      });
+
+      switch (sortSelect.value) {
+        case 'price-asc': list.sort((a,b) => a.price - b.price); break;
+        case 'price-desc': list.sort((a,b) => b.price - a.price); break;
+        case 'ram-desc': list.sort((a,b) => b.ram - a.ram || a.price - b.price); break;
+        case 'screen-desc': list.sort((a,b) => b.screen - a.screen); break;
+        case 'name-asc': list.sort((a,b) => a.name.localeCompare(b.name, 'pt-BR')); break;
+        default: list.sort((a,b) => a.id - b.id);
+      }
+      return list;
+    }
+
+    function renderChips() {
+      const chips = [];
+      brandInputs.filter(input => input.checked).forEach(input => {
+        chips.push({label: input.value, remove: () => { input.checked = false; updateCatalog(); }});
+      });
+      if (minPriceInput.value !== '') chips.push({label: `Mín. ${money(Number(minPriceInput.value))}`, remove: () => { minPriceInput.value = ''; updateCatalog(); }});
+      if (maxPriceInput.value !== '') chips.push({label: `Máx. ${money(Number(maxPriceInput.value))}`, remove: () => { maxPriceInput.value = ''; updateCatalog(); }});
+      if (searchInput.value.trim()) chips.push({label: `Busca: ${searchInput.value.trim()}`, remove: () => { searchInput.value = ''; updateCatalog(); }});
+
+      activeFilters.innerHTML = chips.map((chip, index) =>
+        `<span class="filter-chip">${escapeHtml(chip.label)} <button type="button" data-chip="${index}" aria-label="Remover filtro ${escapeHtml(chip.label)}">×</button></span>`
+      ).join('');
+      activeFilters.querySelectorAll('[data-chip]').forEach(button => {
+        button.addEventListener('click', () => chips[Number(button.dataset.chip)].remove());
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+      }[char]));
+    }
+
+    function updateCatalog() {
+      const list = getFilteredProducts();
+      renderCards(list);
+      renderChips();
+      totalBadge.textContent = `${list.length} ${list.length === 1 ? 'modelo' : 'modelos'}`;
+      resultsCount.textContent = `Mostrando ${list.length} de ${products.length} modelos`;
+      emptyState.style.display = list.length ? 'none' : 'block';
+      grid.style.display = list.length ? 'grid' : 'none';
+    }
+
+    function clearFilters() {
+      searchInput.value = '';
+      minPriceInput.value = '';
+      maxPriceInput.value = '';
+      brandInputs.forEach(input => input.checked = false);
+      sortSelect.value = 'featured';
+      updateCatalog();
+    }
+
+    function openDetails(id) {
+      const product = products.find(item => item.id === id);
+      if (!product) return;
+      document.getElementById('modal-brand').textContent = product.brand;
+      document.getElementById('modal-title').textContent = product.name;
+      document.getElementById('modal-specs').innerHTML = [
+        ['Memória RAM', `${product.ram} GB`],
+        ['Armazenamento', `SSD ${product.storage} GB`],
+        ['Tela', `${product.screen.toLocaleString('pt-BR')}"`],
+        ['Marca', product.brand]
+      ].map(([label,value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join('');
+      document.getElementById('modal-price').textContent = money(product.price);
+      modal.classList.add('open');
+      document.getElementById('modal-close').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+    }
+
+    products.forEach((product, index) => product.id = index + 1);
+    searchInput.addEventListener('input', updateCatalog);
+    sortSelect.addEventListener('change', updateCatalog);
+    brandInputs.forEach(input => input.addEventListener('change', updateCatalog));
+    minPriceInput.addEventListener('input', updateCatalog);
+    maxPriceInput.addEventListener('input', updateCatalog);
+    document.getElementById('clear-filters').addEventListener('click', clearFilters);
+    document.getElementById('empty-clear').addEventListener('click', clearFilters);
+    document.getElementById('apply-filters').addEventListener('click', () => {
+      updateCatalog();
+      filtersPanel.classList.remove('expanded');
+    });
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-done').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+
+    menuToggle.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(opened));
+      menuToggle.textContent = opened ? '× Fechar' : '☰ Menu';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded','false');
+      menuToggle.textContent = '☰ Menu';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    updateCatalog();
+  </script>
+</body>
+</html>
